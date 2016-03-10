@@ -1,0 +1,14 @@
+# vi: set sw=2 ts=2:
+---
+galaxy_info:
+  author: marteinn
+  description: aws-cli on your ubuntu machine
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+  categories:
+    - development
+dependencies: []
