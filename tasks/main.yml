@@ -1,0 +1,20 @@
+- name: Install aws with pip
+  sudo: yes
+  pip: name=awscli
+
+- name: Assures aws dir exists
+  file: path={{ aws_home_dir }}/.aws state=directory
+        owner={{ aws_ssh_user }}
+        group={{ aws_ssh_user }}
+
+- name: Create aws config file
+  template: src=config.tpl dest={{ aws/home_dir }}/.aws/config
+            owner={{ aws_ssh_user }}
+            group={{ aws_ssh_user }}
+  when: aws_region is defined
+
+- name: Create aws credential file
+  template: src=credentials.tpl dest={{ aws_home_dir }}/.aws/credentials
+            owner={{ aws_ssh_user }}
+            group={{ aws_ssh_user }}
+  when: aws_access_key_id is defined and aws_secret_access_key is defined
